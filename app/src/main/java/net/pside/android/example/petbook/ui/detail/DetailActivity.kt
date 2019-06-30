@@ -10,18 +10,19 @@ import net.pside.android.example.petbook.R
 
 class DetailActivity : AppCompatActivity() {
     companion object {
-        fun createIntent(context: Context, imageUrl: String): Intent {
-            val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra("image", imageUrl)
-            return intent
-        }
+        private const val IMAGE_KEY = "image"
+
+        fun createIntent(context: Context, imageUrl: String): Intent =
+            Intent(context, DetailActivity::class.java).apply {
+                putExtra(IMAGE_KEY, imageUrl)
+            }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
 
-        val imageUrl = intent.getStringExtra("image")!!
+        val imageUrl = intent.getStringExtra(IMAGE_KEY)!!
         val image: ImageView = findViewById(R.id.image)
         Glide
             .with(image)
