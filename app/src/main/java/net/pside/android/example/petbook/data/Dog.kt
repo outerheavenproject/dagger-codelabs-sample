@@ -8,3 +8,9 @@ data class Dog(
     @SerialName("message") val message: String,
     @SerialName("status") val status: String
 )
+
+@Serializable
+data class Dogs(
+    @SerialName("message") val messages: List<String>,
+    @SerialName("status") val status: String
+)

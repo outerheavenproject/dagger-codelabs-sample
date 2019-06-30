@@ -1,10 +1,10 @@
 package net.pside.android.example.petbook.ui
 
-import net.pside.android.example.petbook.data.Dog
+import net.pside.android.example.petbook.data.Dogs
 
 interface MainContract {
     interface View {
-        fun updateDog(dog: Dog)
+        fun updateDogs(dogs: Dogs)
     }
 
     interface Presenter

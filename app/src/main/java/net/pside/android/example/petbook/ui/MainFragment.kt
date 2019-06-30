@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.coroutines.launch
 import net.pside.android.example.petbook.R
-import net.pside.android.example.petbook.data.Dog
+import net.pside.android.example.petbook.data.Dogs
 
 class MainFragment : Fragment(),
     MainContract.View {
@@ -45,12 +45,12 @@ class MainFragment : Fragment(),
         }
     }
 
-    override fun updateDog(dog: Dog) {
-        dogAdapter.submitList(listOf(dog))
+    override fun updateDogs(dogs: Dogs) {
+        dogAdapter.submitList(dogs.messages)
     }
 }
 
-class DogAdapter : ListAdapter<Dog, DogViewHolder>(DogDiffUtil) {
+class DogAdapter : ListAdapter<String, DogViewHolder>(DogDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder {
         return DogViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -63,20 +63,20 @@ class DogAdapter : ListAdapter<Dog, DogViewHolder>(DogDiffUtil) {
 
     override fun onBindViewHolder(holder: DogViewHolder, position: Int) {
         val dog = getItem(position)
-        holder.title.text = dog.status
+        holder.title.text = dog
         Glide
             .with(holder.image)
-            .load(dog.message)
+            .load(dog)
             .into(holder.image)
     }
 }
 
-private object DogDiffUtil : DiffUtil.ItemCallback<Dog>() {
-    override fun areItemsTheSame(oldItem: Dog, newItem: Dog): Boolean {
+private object DogDiffUtil : DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: Dog, newItem: Dog): Boolean {
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
 }

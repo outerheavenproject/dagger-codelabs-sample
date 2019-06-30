@@ -13,9 +13,9 @@ class MainPresenter(
     private val view: MainContract.View
 ) : MainContract.Presenter {
     suspend fun start() {
-        val dog = getDogService().getDog()
+        val dogs = getDogService().getDogs(limit = 20)
         withContext(Dispatchers.Main) {
-            view.updateDog(dog)
+            view.updateDogs(dogs)
         }
     }
 }
