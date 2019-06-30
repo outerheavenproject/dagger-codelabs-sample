@@ -3,6 +3,7 @@ package net.pside.android.example.petbook.ui.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
@@ -21,6 +22,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.detail_activity)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         val imageUrl = intent.getStringExtra(IMAGE_KEY)!!
         val image: ImageView = findViewById(R.id.image)
@@ -28,5 +30,15 @@ class DetailActivity : AppCompatActivity() {
             .with(image)
             .load(imageUrl)
             .into(image)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
