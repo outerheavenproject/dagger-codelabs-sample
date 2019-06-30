@@ -43,6 +43,6 @@ class ShibaFragment : Fragment(),
     }
 
     override fun updateDogs(dogs: Dogs) {
-        dogAdapter.submitList(dogs.messages)
+        dogAdapter.submitList(dogs.urls)
     }
 }
