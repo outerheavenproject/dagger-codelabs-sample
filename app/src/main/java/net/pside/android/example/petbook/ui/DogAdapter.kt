@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import net.pside.android.example.petbook.R
 
-class DogAdapter : ListAdapter<String, DogViewHolder>(DogDiffUtil) {
+class DogAdapter(
+    private val navigator: AppNavigator
+) : ListAdapter<String, DogViewHolder>(DogDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder =
         DogViewHolder(
             LayoutInflater.from(parent.context).inflate(
@@ -25,6 +27,9 @@ class DogAdapter : ListAdapter<String, DogViewHolder>(DogDiffUtil) {
         Glide.with(holder.image)
             .load(dogUrl)
             .into(holder.image)
+        holder.itemView.setOnClickListener {
+            navigator.navigateToDetail(it.context, dogUrl)
+        }
     }
 }
 

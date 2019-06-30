@@ -29,7 +29,7 @@ class MainFragment : Fragment(),
         super.onViewCreated(view, savedInstanceState)
 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
-        dogAdapter = DogAdapter()
+        dogAdapter = DogAdapter(navigator = AppNavigatorImpl())
         recycler.layoutManager = GridLayoutManager(context, 2)
         recycler.adapter = dogAdapter
 
