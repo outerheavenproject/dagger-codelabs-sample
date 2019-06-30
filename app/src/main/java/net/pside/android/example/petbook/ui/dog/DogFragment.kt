@@ -1,4 +1,4 @@
-package net.pside.android.example.petbook.ui
+package net.pside.android.example.petbook.ui.dog
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 import net.pside.android.example.petbook.R
 import net.pside.android.example.petbook.data.Dogs
+import net.pside.android.example.petbook.ui.AppNavigatorImpl
+import net.pside.android.example.petbook.ui.DogAdapter
 
-class MainFragment : Fragment(),
-    MainContract.View {
-    private lateinit var presenter: MainPresenter
+class DogFragment : Fragment(),
+    DogContract.View {
+    private lateinit var presenter: DogContract.Presenter
     private lateinit var dogAdapter: DogAdapter
 
     override fun onCreateView(
@@ -22,7 +24,7 @@ class MainFragment : Fragment(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        return inflater.inflate(R.layout.dog_fragment, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -33,7 +35,7 @@ class MainFragment : Fragment(),
         recycler.layoutManager = GridLayoutManager(context, 2)
         recycler.adapter = dogAdapter
 
-        presenter = MainPresenter(view = this)
+        presenter = DogPresenter(view = this)
 
         lifecycleScope.launch {
             presenter.start()

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import net.pside.android.example.petbook.R
+import net.pside.android.example.petbook.ui.dog.DogFragment
 import net.pside.android.example.petbook.ui.shiba.ShibaFragment
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
-                add(R.id.container, MainFragment())
+                add(R.id.container, DogFragment())
             }
         }
 
@@ -23,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.action_dog -> {
                     supportFragmentManager.commit {
-                        replace(R.id.container, MainFragment())
+                        replace(R.id.container, DogFragment())
                     }
                 }
                 R.id.action_shiba -> {

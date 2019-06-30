@@ -1,8 +1,8 @@
-package net.pside.android.example.petbook.ui.shiba
+package net.pside.android.example.petbook.ui.dog
 
 import net.pside.android.example.petbook.data.Dogs
 
-interface ShibaContract {
+interface DogContract {
     interface View {
         fun updateDogs(dogs: Dogs)
     }

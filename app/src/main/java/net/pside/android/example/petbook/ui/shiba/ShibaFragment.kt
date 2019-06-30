@@ -13,10 +13,9 @@ import net.pside.android.example.petbook.R
 import net.pside.android.example.petbook.data.Dogs
 import net.pside.android.example.petbook.ui.AppNavigatorImpl
 import net.pside.android.example.petbook.ui.DogAdapter
-import net.pside.android.example.petbook.ui.MainContract
 
 class ShibaFragment : Fragment(),
-    MainContract.View {
+    ShibaContract.View {
     private lateinit var presenter: ShibaPresenter
     private lateinit var dogAdapter: DogAdapter
 
