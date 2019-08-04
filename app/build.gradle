@@ -55,6 +55,12 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 
+    testImplementation 'androidx.test:core-ktx:1.2.0'
+    testImplementation 'androidx.test.ext:junit-ktx:1.1.1'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.2.2'
+    testImplementation "org.robolectric:robolectric:4.3"
+    testImplementation "com.google.truth:truth:0.45"
+
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
