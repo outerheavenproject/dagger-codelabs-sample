@@ -7,7 +7,10 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [DataModule::class]
+    modules = [
+        DataModule::class,
+        OkHttpClientModule::class
+    ]
 )
 interface AppComponent {
     @Component.Factory
