@@ -1,7 +1,9 @@
 package com.github.outerheavenproject.wanstagram.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.fragment.app.commit
 import com.github.outerheavenproject.wanstagram.R
 import com.github.outerheavenproject.wanstagram.ui.dog.DogFragment
@@ -13,7 +15,12 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasAndroidInjector {
+class MainActivity : AppCompatActivity(), HasAndroidInjector, MainContract.View {
+    @Inject
+    lateinit var presenter: MainContract.Presenter
+
+    @Inject
+    lateinit var navigator: AppNavigator
 
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
@@ -45,6 +52,15 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
             }
             true
         }
+
+        findViewById<View>(R.id.fab)
+            .setOnClickListener { presenter.share() }
+
+        presenter.start()
+    }
+
+    override fun shareDogs(dogs: Set<String>) {
+        navigator.shareUris(this, ArrayList(dogs.map { it.toUri() }))
     }
 
     override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
