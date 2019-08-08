@@ -12,17 +12,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.outerheavenproject.wanstagram.R
 import com.github.outerheavenproject.wanstagram.data.Dogs
 import com.github.outerheavenproject.wanstagram.ui.DogAdapter
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
 import dagger.android.support.AndroidSupportInjection
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class DogFragment : Fragment(),
-    DogContract.View {
+class DogFragment : Fragment(), DogContract.View, HasAndroidInjector {
     @Inject
     lateinit var presenter: DogPresenter
 
     @Inject
     lateinit var dogAdapter: DogAdapter
+
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
@@ -54,4 +59,6 @@ class DogFragment : Fragment(),
     override fun updateDogs(dogs: Dogs) {
         dogAdapter.submitList(dogs.urls)
     }
+
+    override fun androidInjector(): AndroidInjector<Any> = dispatchingAndroidInjector
 }
