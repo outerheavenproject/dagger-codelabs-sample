@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.github.outerheavenproject.wanstagram.R
+import javax.inject.Inject
 
-class DogAdapter(
+class DogAdapter @Inject constructor(
     private val navigator: AppNavigator
 ) : ListAdapter<String, DogViewHolder>(DogDiffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DogViewHolder =
