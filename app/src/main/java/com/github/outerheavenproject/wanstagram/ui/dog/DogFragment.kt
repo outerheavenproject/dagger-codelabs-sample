@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.outerheavenproject.wanstagram.App
 import com.github.outerheavenproject.wanstagram.R
 import com.github.outerheavenproject.wanstagram.data.Dogs
+import com.github.outerheavenproject.wanstagram.ui.AppNavigator
 import com.github.outerheavenproject.wanstagram.ui.AppNavigatorImpl
 import com.github.outerheavenproject.wanstagram.ui.DogAdapter
+import com.github.outerheavenproject.wanstagram.ui.MainActivity
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,10 +23,14 @@ class DogFragment : Fragment(),
     DogContract.View {
     @Inject
     lateinit var presenter: DogPresenter
+
+    @Inject
+    lateinit var navigator: AppNavigator
+
     private lateinit var dogAdapter: DogAdapter
 
     override fun onAttach(context: Context) {
-        (activity!!.application as App).appComponent.inject(this)
+        (activity as MainActivity).subComponent.inject(this)
         super.onAttach(context)
     }
 
@@ -40,7 +46,7 @@ class DogFragment : Fragment(),
         super.onViewCreated(view, savedInstanceState)
 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
-        dogAdapter = DogAdapter(navigator = AppNavigatorImpl(context!!))
+        dogAdapter = DogAdapter(navigator = navigator)
         recycler.layoutManager = GridLayoutManager(context, 2)
         recycler.adapter = dogAdapter
 

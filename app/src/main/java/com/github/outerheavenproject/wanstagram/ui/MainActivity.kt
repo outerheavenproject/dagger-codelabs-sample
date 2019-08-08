@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.github.outerheavenproject.wanstagram.App
+import com.github.outerheavenproject.wanstagram.MainActivitySubcomponent
 import com.github.outerheavenproject.wanstagram.R
 import com.github.outerheavenproject.wanstagram.ui.dog.DogFragment
 import com.github.outerheavenproject.wanstagram.ui.shiba.ShibaFragment
@@ -12,15 +13,17 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
     @Inject
-    lateinit var appNavigator: AppNavigatorImpl
+    lateinit var appNavigator: AppNavigator
+
+    lateinit var subComponent: MainActivitySubcomponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (application as App)
+        subComponent = (application as App)
             .appComponent
             .mainActivitySubcomponentFactory()
             .create(this)
-            .inject(this)
+        subComponent.inject(this)
 
         setContentView(R.layout.main_activity)
 
