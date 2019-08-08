@@ -3,4 +3,6 @@
 
     <string name="dog">犬</string>
     <string name="shiba">柴犬</string>
+
+    <string name="add_share_list">後でシェアする</string>
 </resources>
