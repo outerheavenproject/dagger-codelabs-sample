@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.outerheavenproject.wanstagram.R
 import com.github.outerheavenproject.wanstagram.data.Dogs
 import com.github.outerheavenproject.wanstagram.ui.DogAdapter
-import com.github.outerheavenproject.wanstagram.ui.MainActivity
+import dagger.android.support.AndroidSupportInjection
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,7 +25,7 @@ class DogFragment : Fragment(),
     lateinit var dogAdapter: DogAdapter
 
     override fun onAttach(context: Context) {
-        (activity as MainActivity).subComponent.inject(this)
+        AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }
 
