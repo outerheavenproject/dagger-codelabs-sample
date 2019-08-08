@@ -40,7 +40,7 @@ class ShibaFragment : Fragment(),
         super.onViewCreated(view, savedInstanceState)
 
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
-        dogAdapter = DogAdapter(navigator = AppNavigatorImpl())
+        dogAdapter = DogAdapter(navigator = AppNavigatorImpl(context!!))
         recycler.layoutManager = GridLayoutManager(context, 2)
         recycler.adapter = dogAdapter
 

@@ -18,6 +18,8 @@ interface AppComponent {
         fun create(): AppComponent
     }
 
+    fun mainActivitySubcomponentFactory(): MainActivitySubcomponent.Factory
+
     fun inject(fragment: DogFragment): DogFragment
     fun inject(fragment: ShibaFragment): ShibaFragment
 }

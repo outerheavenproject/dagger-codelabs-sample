@@ -28,7 +28,7 @@ class DogAdapter(
             .load(dogUrl)
             .into(holder.image)
         holder.itemView.setOnClickListener {
-            navigator.navigateToDetail(it.context, dogUrl)
+            navigator.navigateToDetail(dogUrl)
         }
     }
 }
