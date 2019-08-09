@@ -1,6 +1,7 @@
 package com.github.outerheavenproject.wanstagram.ui
 
 import android.content.Context
+import com.github.outerheavenproject.wanstagram.di.MyScope
 import com.github.outerheavenproject.wanstagram.ui.dog.DogFragmentModule
 import com.github.outerheavenproject.wanstagram.ui.shiba.ShibaFragmentModule
 import dagger.Binds
@@ -9,6 +10,7 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 interface MainActivityModule {
+    @MyScope
     @ContributesAndroidInjector(
         modules = [
             MainActivityBindModule::class,
