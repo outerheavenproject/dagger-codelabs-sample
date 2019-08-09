@@ -8,6 +8,7 @@ interface DogContract {
     }
 
     interface Presenter {
+        fun attachView(view: View)
         suspend fun start()
     }
 }
