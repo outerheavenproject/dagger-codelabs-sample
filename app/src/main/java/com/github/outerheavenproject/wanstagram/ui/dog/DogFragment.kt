@@ -19,7 +19,7 @@ import javax.inject.Inject
 class DogFragment : Fragment(),
     DogContract.View {
     @Inject
-    lateinit var presenter: DogPresenter
+    lateinit var presenter: DogContract.Presenter
 
     @Inject
     lateinit var dogAdapter: DogAdapter
