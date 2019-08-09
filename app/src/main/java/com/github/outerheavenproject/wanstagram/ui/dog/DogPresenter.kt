@@ -10,7 +10,7 @@ class DogPresenter @Inject constructor(
 ) : DogContract.Presenter {
     private lateinit var view: DogContract.View
 
-    fun attachView(view: DogContract.View) {
+    override fun attachView(view: DogContract.View) {
         this.view = view
     }
 
