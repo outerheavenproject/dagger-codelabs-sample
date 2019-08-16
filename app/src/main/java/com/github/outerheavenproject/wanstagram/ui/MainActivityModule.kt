@@ -2,6 +2,7 @@ package com.github.outerheavenproject.wanstagram.ui
 
 import android.content.Context
 import androidx.fragment.app.FragmentManager
+import com.github.outerheavenproject.wanstagram.di.ActivityScope
 import com.github.outerheavenproject.wanstagram.ui.dog.DogFragmentModule
 import com.github.outerheavenproject.wanstagram.ui.dogaction.DogActionBottomSheetDialogFragmentModule
 import com.github.outerheavenproject.wanstagram.ui.dogaction.DogActionSink
@@ -13,6 +14,7 @@ import dagger.android.ContributesAndroidInjector
 
 @Module
 interface MainActivityModule {
+    @ActivityScope
     @ContributesAndroidInjector(
         modules = [
             MainActivityProvidesModule::class,
